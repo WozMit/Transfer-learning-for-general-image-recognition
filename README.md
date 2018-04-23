@@ -1,1 +1,1 @@
-# Transfer-learning-for-buildings-image-recognition
+# Transfer learning for buildings image recognition
