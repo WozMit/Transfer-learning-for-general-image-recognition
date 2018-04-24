@@ -27,3 +27,5 @@ The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRD
 * [Scikit-learn](http://scikit-learn.org/stable/) 0.19.1
 * [Matplotlib](https://matplotlib.org/) 2.2.2
 * [Pillow](https://pillow.readthedocs.io/en/5.1.x/) 5.1.0
+* [TensorFlow-GPU](https://www.tensorflow.org/) 1.7.0 / TensorFlow 1.5.1
+* [Keras](https://keras.io/) 2.1.6
