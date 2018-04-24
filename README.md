@@ -6,7 +6,7 @@ The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRD
 | Class label    | Building name   | Number of images|
 | :---:         |     :---:       | :---:|
 | 01    |  Casa del Inca Garcilaso de la Vega     |  108    |
-| 02      | Catedral del Cuzco       |159    |
+| 02      | Catedral del Cusco       |159    |
 | 03      | La Compañía de Jesús       |176    |
 | 04    | Coricancha     |  147|
 | 05      | Cristo Blanco       |146|
