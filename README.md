@@ -19,3 +19,11 @@ The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRD
 | 12      | Iglesia de San Francisco       |135|
 | 13      |  Iglesia de San Pedro     |146|
 | 14      |Iglesia de Santo Domingo    |  132|
+
+## Requirements
+* [Python](https://www.python.org/) 3.x
+* [Numpy](http://www.numpy.org/) 1.14.2
+* [Scipy](https://www.scipy.org/) 1.0.1
+* [Scikit-learn](http://scikit-learn.org/stable/) 0.19.1
+* [Matplotlib](https://matplotlib.org/) 2.2.2
+* [Pillow](https://pillow.readthedocs.io/en/5.1.x/) 5.1.0
