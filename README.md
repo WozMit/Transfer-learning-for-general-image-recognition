@@ -1,7 +1,7 @@
 # Transfer learning for general image recognition
 
 ## Dataset
-The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRDQ?usp=sharing) consists of 2000 images with 14 classes representing historical buildings of the city of Cusco--Perú. The class label, name and number of images is presented:
+The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRDQ?usp=sharing) consists of 2000 images with 14 classes representing historical buildings of the city of Cusco-Perú. The class label, name and number of images is presented:
 
 | Class label    | Building name   | Number of images|
 | :---:         |     :---:       | :---:|
