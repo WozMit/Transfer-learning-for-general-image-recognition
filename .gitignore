@@ -1,3 +1,7 @@
 /__pycache__
 /train
 /test
+output_data_train.npy
+output_cls_train.npy
+output_data_test.npy
+output_cls_test.npy
