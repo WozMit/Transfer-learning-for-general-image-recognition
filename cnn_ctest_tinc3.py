@@ -44,7 +44,7 @@ def configure_network2(dataset, input_dim):
 	num_features = int(input_dim)
 	fc_size1 = int(1024)
 	fc_size2 = int(1024)
-	print "num_classes {} num_features {}".format(num_classes, num_features)
+	print ("num_classes {} num_features {}".format(num_classes, num_features))
 	layer_fc1 = new_fc_layer(input = dataset,
 								num_inputs = num_features,
 								num_outputs = fc_size1,
@@ -62,7 +62,7 @@ def configure_network2(dataset, input_dim):
 
 	y_pred = tf.nn.softmax(layer_fc3)
 
-	print y_pred
+	print (y_pred)
 
 	cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits = layer_fc3, labels = y_true)
 
@@ -75,7 +75,7 @@ def configure_network1(dataset, input_dim):
 
 	num_features = int(input_dim)
 	fc_size1 = int(1024)
-	print "num_classes {} num_features {}".format(num_classes, num_features)
+	print ("num_classes {} num_features {}".format(num_classes, num_features))
 	layer_fc1 = new_fc_layer(input = dataset,
 								num_inputs = num_features,
 								num_outputs = fc_size1,
@@ -88,7 +88,7 @@ def configure_network1(dataset, input_dim):
 
 	y_pred = tf.nn.softmax(layer_fc2)
 
-	print y_pred
+	print( y_pred)
 
 	cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits = layer_fc2, labels = y_true)
 
@@ -165,7 +165,7 @@ def print_test_accuracy():
 	correct, cls_pred = predict_cls(dataset = dataset_test,
 						labels = labels_test, cls_true = cls_test)
 
-	print "cls_pred"
+	print ("cls_pred")
 	print cls_pred
 
 	print "cls_test"

@@ -70,7 +70,7 @@ data_url = "http://download.tensorflow.org/models/image/imagenet/inception-2015-
 
 # Directory to store the downloaded data.
 #data_dir = "inception/"
-data_dir = "D:\\Users\\WozMit\\Documents\\Projects\\CuscoBID-master\\CNN-Transfer Learning\\inception-2015-12-05"
+data_dir = "D:/Documentos/Projects/Transfer learning for general image recognition/inception-2015-12-05"
 
 # File containing the mappings between class-number and uid. (Downloaded)
 path_uid_to_cls = "imagenet_2012_challenge_label_map_proto.pbtxt"

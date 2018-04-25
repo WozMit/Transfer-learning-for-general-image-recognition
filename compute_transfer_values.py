@@ -114,7 +114,7 @@ def compute_batch_train_transfer_values(dataset_dir, list_filenames):
 	# compute number of original images and total number of images (after transformations)
 	nimages = len(list_filenames)
 	print(nimages)
-	if data_aug == "si":		
+	if data_aug == "yes":		
 		num_rot_transf = len(angles_array)
 		final_nimages = nimages * (num_rot_transf + 1) * (num_color_transf + 1)
 		# allocate memory
@@ -273,7 +273,7 @@ def compute_train_transfer_values(dataset_dir):
 	image_filenames = [f for f in os.listdir(dataset_dir) if f.endswith(".jpg")]
 	image_filenames.sort()
 	nimages = len(image_filenames)
-	if data_aug == "si":
+	if data_aug == "yes":
 		# compute number of original images and total number of images (after transformations)
 		num_rot_transf = len(angles_array)
 		num_total_transf = (num_rot_transf + 1) * (num_color_transf + 1)
@@ -356,7 +356,7 @@ def main():
 
 	args = parser.parse_args()
 
-	img_dir = args.img_dir
+	img_dir = args.img_dir + "\\";
 	dataset_type = args.dataset_type
 	model_type = args.model_type
 	data_augmentation = args.data_augmentation
@@ -404,7 +404,7 @@ def main():
 		standard_size = 299
 
 	if dataset_type == "train":
-		if data_augmentation == "si":
+		if data_augmentation == "yes":
 			# initialize session
 			session = tf.Session()
 			image = tf.placeholder(tf.float32, shape=[standard_size, standard_size, num_channels], name = 'image')

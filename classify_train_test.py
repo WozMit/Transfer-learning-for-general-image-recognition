@@ -1,4 +1,3 @@
-#!/usr/bin/python2.7
 import os
 import sys
 import argparse
@@ -10,7 +9,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 import pickle
 from sklearn.externals import joblib
-import warnings
 
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -85,7 +83,7 @@ def main():
 	else:
 		print( "KNN")
 		cls = KNeighborsClassifier(1)
-	warnings.filterwarnings('always')
+	
 	# train classifier
 	cls.fit(train_data, train_labels)
 	time_sec = (time.clock() - time_ini)
@@ -129,7 +127,7 @@ def main():
 			print( "Accuracy class {} : {}".format(i+1, accuracy_class))
 	
 	#  - Save the model to disk using joblib
-	joblib_fname = 'prueba_split.pkl'
+	joblib_fname = 'logreg_joblib.pkl'
 	joblib.dump(cls, joblib_fname)
 	
 	print( "Saved {}!!".format(joblib_fname))
