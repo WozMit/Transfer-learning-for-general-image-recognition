@@ -48,7 +48,7 @@ The command for computing transfer values:
 Where
 * <path> : Path to directory of input images for training or testing
 * <type> : Dataset type (train, test)
-* <model> : Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
+* <data_augmentation> : Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
 * <data_augmentation> : Data augmentation (yes, no)
 * <features> : Name of the .npy file to be created containing the vector of features. E.g. `output_data_train.npy`
 * <classes> : Name of the .npy file to be created containing the classes. E.g. `output_cls_train.npy`
