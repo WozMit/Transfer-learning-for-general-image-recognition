@@ -31,10 +31,10 @@ The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRD
 * [Keras](https://keras.io/) 2.1.6
 
 ## Compute transfer values
-Different pre-trained CNN are used, all provided by the framework [Keras](https://github.com/fchollet/deep-learning-models) ([VGG16, VGG19](https://arxiv.org/abs/1409.1556), [Xception](https://arxiv.org/abs/1610.02357), [ResNet](https://arxiv.org/abs/1512.03385), [Inception-Resnet-v2](https://arxiv.org/abs/1602.07261)) and Magnus Erik Hvass Pedersen ([Inception V-3](https://arxiv.org/abs/1512.00567)).
+Different pre-trained CNN are used, all provided by the framework [Keras](https://github.com/fchollet/deep-learning-models) ([VGG16, VGG19](https://arxiv.org/abs/1409.1556), [Xception](https://arxiv.org/abs/1610.02357), [ResNet](https://arxiv.org/abs/1512.03385), [Inception-Resnet-v2](https://arxiv.org/abs/1602.07261)) and [Magnus Erik Hvass Pedersen](https://github.com/Hvass-Labs/TensorFlow-Tutorials) ([Inception-v3](https://arxiv.org/abs/1512.00567)).
 
 ### VGG16, VGG19, Xception, Resnet, Inception-Resnet-v2
 Pre-trained weights can be automatically loaded upon execution. Weights are automatically downloaded if necessary, and cached locally in ~/.keras/models/.
 
-### Inception-V3
-You must download the pre-trained model from [here](download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz) and unzip the model in a folder. Then modify the model's path in the ´inception.py´ file (line 73 ´data_dir´ variable).
+### Inception-v3
+You must download the pre-trained model from [here](download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz) and unzip the model in a folder. Then modify the model's path in the `inception.py` file (line 73 `data_dir` variable).
