@@ -37,4 +37,4 @@ Different pre-trained CNN are used, all provided by the framework [Keras](https:
 Pre-trained weights can be automatically loaded upon execution. Weights are automatically downloaded if necessary, and cached locally in ~/.keras/models/.
 
 ### Inception-v3
-You must download the pre-trained model from [here](download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz) and unzip the model in a folder. Then modify the model's path in the `inception.py` file (line 73 `data_dir` variable).
+You must download the pre-trained model from [here](http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz.) and unzip the model in a folder. Then modify the model's path in the `inception.py` file (line 73 `data_dir` variable).
