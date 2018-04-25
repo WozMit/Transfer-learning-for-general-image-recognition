@@ -38,7 +38,6 @@ def linearSVM_grid_search(dataset, labels):
 	return clf.best_params_['C']
 
 def main():
-
 	parser = argparse.ArgumentParser()
 	parser.add_argument("dataset_train_filename", type=str, help="Dataset train file name (*.npy)")
 	parser.add_argument("labels_train_filename", type=str, help="Label train filename (*.npy)")
