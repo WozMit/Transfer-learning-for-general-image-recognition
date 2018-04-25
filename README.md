@@ -43,12 +43,12 @@ The main activity is to compute the transfer values that outputs one of the prev
 As the training must be done with just the training set, it is necessary to compute the transfer values two times: one for the training set and one for the test set. Thus, the transfer values of a particular CNN model can be fully defined by four `.npy` files: `output_data_train.npy`, `output_cls_train.npy`, `output_data_test.npy`, `output_cls_test.npy`.
 
 The command for computing transfer values:
-`python compute_transfer_values.py <path> <type> <model> <data_augmentation> <features> <classes>`
+`python compute_transfer_values.py < path > < type > < model > < data_augmentation > < features > < classes >`
 
 Where
-* <path> : Path to directory of input images for training or testing
-* <type> : Dataset type (train, test)
-* <modeloasdf> : Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
-* <data_augmentation> : Data augmentation (yes, no)
-* <features> : Name of the .npy file to be created containing the vector of features. E.g. `output_data_train.npy`
-* <classes> : Name of the .npy file to be created containing the classes. E.g. `output_cls_train.npy`
+* < path > : Path to directory of input images for training or testing
+* < type > : Dataset type (train, test)
+* <_model > : Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
+* < data_augmentation > : Data augmentation (yes, no)
+* < features > : Name of the .npy file to be created containing the vector of features. E.g. `output_data_train.npy`
+* < classes > : Name of the .npy file to be created containing the classes. E.g. `output_cls_train.npy`
