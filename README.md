@@ -44,28 +44,28 @@ As the training must be done with just the training set, it is necessary to comp
 
 The command for computing transfer values:
 
-`python compute_transfer_values.py < path > < type > < model > < data_augmentation > < features > < classes >`
+`python compute_transfer_values.py <path> <type> <model> <data_augmentation> <features> <classes>`
 
 Where
-* < path > : Path to directory of input images for training or testing
-* < type > : Dataset type (train, test)
-* < model > : Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
-* < data_augmentation > : Data augmentation (yes, no)
-* < features > : Name of the .npy file to be created containing the vector of features. E.g. `output_data_train.npy`
-* < classes > : Name of the .npy file to be created containing the classes. E.g. `output_cls_train.npy`
+* `<path>`: Path to directory of input images for training or testing
+* `<type>`: Dataset type (train, test)
+* `<model>`: Model type (vgg16, vgg19, resnet, inception, exception, inceptresv2)
+* `<data_augmentation>`: Data augmentation (yes, no)
+* `<features>`: Name of the `.npy` file to be created containing the vector of features. E.g. `output_data_train.npy`
+* `<classes>`: Name of the `.npy` file to be created containing the classes. E.g. `output_cls_train.npy`
 
 ## Classification
 Once obtained the transfer values, our goal is to fit some model with the training data to accurately predict the test data.
 
 The command for making classification:
 
-`python classify.py < train_data > < train_labels > < test_data > < test_labels > < model > < rejection > < output_file >`
+`python classify.py <train_data> <train_labels> <test_data> <test_labels> <model> <rejection> <output_file>`
 
 Where
-* < train_data > : Name of the .npy file containing the training data. E.g. `output_data_train.npy`
-* < train_labels > : Name of the .npy file containing the training labels. E.g. `output_cls_train.npy`
-* < test_data > : Name of the .npy file containing the test data. E.g. `output_data_test.npy`
-* < test_labels > : Name of the .npy file containing the test labels. E.g. `output_cls_test.npy`
-* < model > : Model to predict the data (svm, knn, rf)
-* < rejection > : Use rejection for prediction (yes, no)
-* < output_file > : Name of the file to be created containing the output of the process
+* `<train_data>`: Name of the `.npy` file containing the training data. E.g. `output_data_train.npy`
+* `<train_labels>`: Name of the `.npy` file containing the training labels. E.g. `output_cls_train.npy`
+* `<test_data>`: Name of the `.npy` file containing the test data. E.g. `output_data_test.npy`
+* `<test_labels>`: Name of the `.npy` file containing the test labels. E.g. `output_cls_test.npy`
+* `<model>`: Model to predict the data (svm, knn, rf)
+* `<rejection>`: Use rejection for prediction (yes, no)
+* `<output_file>`: Name of the file to be created containing the output of the process
