@@ -82,6 +82,7 @@ model.fit(train_data, train_labels);
 print("\nModel trained");
 
 # Predict test data
+
 predicted_labels = model.predict(test_data);
 
 if(rejection):
@@ -93,10 +94,10 @@ if(rejection):
 	#	else:
 	#		bad += J(pre[t]*100);
 	#print(good/1000, bad/1000);
-	lim = 40;
-	for t in range(1000):
-		if(J(pre[t]*100) < lim): predicted_labels[t] = (test_labels[t]+1)%14;
-
+	lim = 80;
+	for t in range(len(test_labels)):
+		if(J(pre[t]*100) < lim): predicted_labels[t] = 14;
+print(predicted_labels);
 # Accuracy, recall, precision, f1
 accuracy = accuracy_score(test_labels, predicted_labels);
 recall = recall_score(test_labels, predicted_labels, average="macro");
