@@ -27,8 +27,6 @@ def linearSVM_grid_search(dataset, labels):
 	return model.best_params_['C'];
 
 def J(v):
-	#v = [3, 7, 10, 80];
-	#v.append(100 - np.sum(v));
 	v.sort();
 	return v[-1] - np.mean(v[:-1]) - np.std(v[:-1]);
 
@@ -54,10 +52,9 @@ model_name = args.model;
 rejection = (args.rejection == "yes");
 if(model_name == "linear_svc" or model_name == "svc"): rejection = False;
 output_filename = args.output_filename;
-print("Dataset read");
+print("\nDataset read\n");
 
 # Select model
-model = None;
 if model_name == "logistic":
 	model = LogisticRegression();
 elif model_name == "linear_svc":
@@ -86,12 +83,19 @@ print("\nModel trained");
 
 # Predict test data
 predicted_labels = model.predict(test_data);
+
 if(rejection):
 	pre = model.predict_proba(test_data);
-	print(test_labels[100]);
-	print(predicted_labels[100]);
-	print(pre[100]*100);
-	print(J(pre[100]*100));
+	#good, bad = 0, 0;
+	#for t in range(1000):
+	#	if(test_labels[t] == predicted_labels[t]):
+	#		good += J(pre[t]*100);
+	#	else:
+	#		bad += J(pre[t]*100);
+	#print(good/1000, bad/1000);
+	lim = 40;
+	for t in range(1000):
+		if(J(pre[t]*100) < lim): predicted_labels[t] = (test_labels[t]+1)%14;
 
 # Accuracy, recall, precision, f1
 accuracy = accuracy_score(test_labels, predicted_labels);
