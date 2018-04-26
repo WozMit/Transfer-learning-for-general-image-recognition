@@ -55,7 +55,17 @@ Where
 * < classes > : Name of the .npy file to be created containing the classes. E.g. `output_cls_train.npy`
 
 ## Classification
-Once obtained the transfer values, our goal is to fit some model with the training data to acurateley predict the test data.
+Once obtained the transfer values, our goal is to fit some model with the training data to accurately predict the test data.
 
-The command for making classification is:
+The command for making classification:
 
+`python classify.py < train_data > < train_labels > < test_data > < test_labels > < model > < rejection > < output_file >`
+
+Where
+* < train_data > : Name of the .npy file containing the training data. E.g. `output_data_train.npy`
+* < train_labels > : Name of the .npy file containing the training labels. E.g. `output_cls_train.npy`
+* < test_data > : Name of the .npy file containing the test data. E.g. `output_data_test.npy`
+* < test_labels > : Name of the .npy file containing the test labels. E.g. `output_cls_test.npy`
+* < model > : Model to predict the data (svm, knn, rf)
+* < rejection > : Use rejection for prediction (yes, no)
+* < output_file > : Name of the file to be created containing the output of the process
