@@ -55,17 +55,17 @@ Where
 * `<classes>`: Name of the `.npy` file to be created containing the classes. E.g. `output_cls_train.npy`
 
 ## Classification
-Once obtained the transfer values, our goal is to fit some model with the training data to accurately predict the test data.
+Once obtained the transfer values, our goal is to fit some classifier with the training data to accurately predict the test data.
 
 The command for making classification:
 
-`python classify.py <train_data> <train_labels> <test_data> <test_labels> <model> <rejection> <output_file>`
+`python classify.py <train_data> <train_labels> <test_data> <test_labels> <classifier> <rejection> <output_file>`
 
 Where
 * `<train_data>`: Name of the `.npy` file containing the training data. E.g. `output_data_train.npy`
 * `<train_labels>`: Name of the `.npy` file containing the training labels. E.g. `output_cls_train.npy`
 * `<test_data>`: Name of the `.npy` file containing the test data. E.g. `output_data_test.npy`
 * `<test_labels>`: Name of the `.npy` file containing the test labels. E.g. `output_cls_test.npy`
-* `<model>`: Model to predict the data (logistic, linear_svc, gaussian, bernoulli, multinomial, svc, knn, rf)
+* `<classifier>`: Model to predict the data (logistic, linear_svc, gaussian, bernoulli, multinomial, svc, knn, rf)
 * `<rejection>`: Use rejection for prediction (yes, no). Not available in linear_svc or svc
 * `<output_file>`: Name of the `.pkl` file to be created containing the trained model E.g. `model.pkl`
