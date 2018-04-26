@@ -66,6 +66,6 @@ Where
 * `<train_labels>`: Name of the `.npy` file containing the training labels. E.g. `output_cls_train.npy`
 * `<test_data>`: Name of the `.npy` file containing the test data. E.g. `output_data_test.npy`
 * `<test_labels>`: Name of the `.npy` file containing the test labels. E.g. `output_cls_test.npy`
-* `<model>`: Model to predict the data (svm, knn, rf)
-* `<rejection>`: Use rejection for prediction (yes, no)
+* `<model>`: Model to predict the data (logistic, linear_svc, gaussian, bernoulli, multinomial, svc, knn, rf)
+* `<rejection>`: Use rejection for prediction (yes, no). Not available in linear_svc or svc
 * `<output_file>`: Name of the `.pkl` file to be created containing the trained model E.g. `model.pkl`
