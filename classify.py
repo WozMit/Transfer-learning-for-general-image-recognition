@@ -1,26 +1,36 @@
 import argparse
 import time as tm;
 import numpy as np;
-from sklearn import svm;
-from sklearn.metrics import accuracy_score;
-from sklearn.metrics import recall_score;
-from sklearn.metrics import precision_score;
-from sklearn.metrics import f1_score;
-from sklearn.externals import joblib
+from sklearn.linear_model import LogisticRegression;
+from sklearn.svm import LinearSVC, SVC;
+from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB;
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score;
+from sklearn.model_selection import GridSearchCV;
+from sklearn.externals import joblib;
 
+
+def svm_grid_search(dataset, labels):
+	C_s = 10.0 ** np.arange(-1, 3);
+	gammas = 10.0 ** np.arange(-1, 3);
+	tuned_parameters = [{'kernel': ['rbf'], 'gamma': gammas, 'C': C_s}];
+	model = GridSearchCV(svm.SVC(C=1), tuned_parameters, cv=3);
+	model.fit(dataset, labels);
+	return model.best_params_['C'], model.best_params_['gamma'];
+
+def linearSVM_grid_search(dataset, labels):
+	C_s = 10.0 ** np.arange(-1, 3);
+	tuned_parameters = [{'C': C_s}];
+	model = GridSearchCV(svm.LinearSVC(C=1), tuned_parameters, cv=3);
+	model.fit(dataset, labels);
+	return model.best_params_['C'];
 
 def J(v):
-	v = [3, 7, 10, 80];
-	v.append(100 - np.sum(v));
+	#v = [3, 7, 10, 80];
+	#v.append(100 - np.sum(v));
 	v.sort();
 	return v[-1] - np.mean(v[:-1]) - np.std(v[:-1]);
-
-x = [[0, 0], [1, 1]];
-y = [0, 1];
-#model = svm.SVC(probability=True);
-#model.fit(x, y);
-#pre = model.predict_proba([[1, 1]]);
-#print(pre);
 
 start_time = tm.time();
 
@@ -30,7 +40,7 @@ parser.add_argument("data_train_file", type=str, help="Dataset train file name (
 parser.add_argument("cls_train_file", type=str, help="Label train filename (*.npy)")
 parser.add_argument("data_test_file", type=str, help="Dataset test file name (*.npy)")
 parser.add_argument("cls_test_file", type=str, help="Label test filename (*.npy)")
-parser.add_argument("model", type=str, help="Classifier", choices=['svm', 'linear_svm', 'rf', 'knn'])
+parser.add_argument("model", type=str, help="Classifier", choices=['logistic', 'linear_svc', 'gaussian', 'bernoulli', 'multinomial', 'svc', 'knn', 'rf'])
 parser.add_argument("rejection", type=str, help="Classify with rejection", choices=['yes', 'no']);
 parser.add_argument("output_filename", type=str, help="Predicted output filename");
 args = parser.parse_args()
@@ -42,14 +52,33 @@ test_data = np.load(args.data_test_file);
 test_labels = np.load(args.cls_test_file);
 model_name = args.model;
 rejection = (args.rejection == "yes");
+if(model_name == "linear_svc" or model_name == "svc"): rejection = False;
 output_filename = args.output_filename;
+print("Dataset read");
 
 # Select model
 model = None;
-if model_name == "svm":
-	model = svm.SVC();
-elif model_name == "linear_svm":
-	model = svm.LinearSVC();
+if model_name == "logistic":
+	model = LogisticRegression();
+elif model_name == "linear_svc":
+	#C = linearSVM_grid_search(train_data, train_labels);
+	#C = 0.1;
+	model = LinearSVC();
+elif model_name == "gaussian":
+	model = GaussianNB();
+elif model_name == "bernoulli":
+	model = BernoulliNB();
+elif model_name == "multinomial":
+	model = MultinomialNB();
+elif model_name == "svc":
+	#C, gamma = svm_grid_search(train_data, train_labels)
+	#C, gamma = 10, 0.1;
+	model = SVC();
+elif model_name == "knn":
+	model = KNeighborsClassifier(1);
+else:
+	model = RandomForestClassifier(max_depth=50, n_estimators=500);
+print(type(model));
 
 # Train model
 model.fit(train_data, train_labels);
@@ -57,16 +86,22 @@ print("\nModel trained");
 
 # Predict test data
 predicted_labels = model.predict(test_data);
+if(rejection):
+	pre = model.predict_proba(test_data);
+	print(test_labels[100]);
+	print(predicted_labels[100]);
+	print(pre[100]*100);
+	print(J(pre[100]*100));
 
-# Accuracy
+# Accuracy, recall, precision, f1
 accuracy = accuracy_score(test_labels, predicted_labels);
-print("\nOverall accuracy: %.3f %%" %(accuracy*100));
 recall = recall_score(test_labels, predicted_labels, average="macro");
-print("Overall recall: %.3f %%" %(recall*100));
-#precision = precision_score(test_labels, predicted_labels, average="macro")
-#print("Overall precision: %.3f %%" %(precision*100));
-#f1 = f1_score(test_labels, predicted_labels, average="macro");
-#print("Overall f1: %.3f %%" %(f1*100));
+precision = precision_score(test_labels, predicted_labels, average="macro");
+f1 = f1_score(test_labels, predicted_labels, average="macro");
+print("\nOverall accuracy: %10.3f %%" %(accuracy*100));
+print("Overall recall: %12.3f %%" %(recall*100));
+print("Overall precision: %9.3f %%" %(precision*100));
+print("Overall f1: %16.3f %%" %(f1*100));
 
 # Save the model
 joblib.dump(model, output_filename);
