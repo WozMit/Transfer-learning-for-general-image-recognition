@@ -94,10 +94,18 @@ if(rejection):
 	#	else:
 	#		bad += J(pre[t]*100);
 	#print(good/1000, bad/1000);
-	lim = 80;
+	# inception + logistic -> 45
+	# inception + multinomial -> 45
+	# inception + rf -> 5
+	lim = 45;
 	for t in range(len(test_labels)):
 		if(J(pre[t]*100) < lim): predicted_labels[t] = 14;
+
+print("\nActual labels:");
+print(test_labels);
+print("\nPredicted labels:");
 print(predicted_labels);
+
 # Accuracy, recall, precision, f1
 accuracy = accuracy_score(test_labels, predicted_labels);
 recall = recall_score(test_labels, predicted_labels, average="macro");
