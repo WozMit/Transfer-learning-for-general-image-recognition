@@ -354,7 +354,7 @@ def main():
 	parser.add_argument("img_dir", type=str, help="Directory of images")
 	parser.add_argument("dataset_type", type=str, help="dataset type", choices=['train', 'test'])
 	parser.add_argument("model_type", type=str, help="model type", choices=['vgg16', 'vgg19', 'resnet', 'xception','inception','inceptresv2'])
-	parser.add_argument("data_augmentation", type=str, help="data augmentation", choices=['si', 'no'])
+	parser.add_argument("data_augmentation", type=str, help="data augmentation", choices=['yes', 'no'])
 	parser.add_argument("output_data", type=str, help="Output transfer values (.npy)")
 	parser.add_argument("output_cls", type=str, help="Output classes (.npy)")
 
