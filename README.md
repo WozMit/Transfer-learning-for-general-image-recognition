@@ -68,4 +68,4 @@ Where
 * `<test_labels>`: Name of the `.npy` file containing the test labels. E.g. `output_cls_test.npy`
 * `<model>`: Model to predict the data (svm, knn, rf)
 * `<rejection>`: Use rejection for prediction (yes, no)
-* `<output_file>`: Name of the file to be created containing the output of the process
+* `<output_file>`: Name of the `.pkl` file to be created containing the trained model E.g. `model.pkl`
