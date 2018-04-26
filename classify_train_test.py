@@ -61,75 +61,75 @@ def main():
 	num_classes = len(np.unique(train_labels))
 	num_train = train_data.shape[0]
 	
-	print( "Read dataset Ok")
-	print( "num_train {}".format(num_train))
-	print( 'num classes {}'.format(num_classes))
+	print("Read dataset Ok")
+	print("num_train {}".format(num_train))
+	print('num classes {}'.format(num_classes))
 	time_ini = time.clock()
 
 	# create classifier object
 	cls = None
 	if method == "linear_svm":
 		c = linearSVM_grid_search(train_data, train_labels)
-		print( "Params-> c value {}".format(c))
+		print("Params-> c value {}".format(c))
 		cls = svm.LinearSVC(C=c)
 	elif method == "svm":
 		c , gamma = svm_grid_search(train_data, train_labels)
-		print( "Params -> C: "+ str(c) + ", gamma: "+str(gamma))
+		print("Params -> C: "+ str(c) + ", gamma: "+str(gamma))
 		cls = svm.SVC(C=c, gamma=gamma)
 	elif method == "rf":
-		print( "RF default params")
+		print("RF default params")
 		cls = RandomForestClassifier(max_depth=50, n_estimators=500)
 	else:
-		print( "KNN")
+		print("KNN")
 		cls = KNeighborsClassifier(1)
 	
 	# train classifier
 	cls.fit(train_data, train_labels)
 	time_sec = (time.clock() - time_ini)
-	print( "time train {}".format(time_sec))
+	print("time train {}".format(time_sec))
 
 	# predict labels of test samples
 	time_ini = time.clock()
 
 	pred_test_labels = cls.predict(test_data)
 	time_sec = (time.clock() - time_ini)
-	print( "time classification {}".format(time_sec))
+	print("time classification {}".format(time_sec))
 	
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(test_labels, pred_test_labels)
-	print( "Overall Accuracy {}: ".format(acc_test))
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(test_labels, pred_test_labels, average="macro")  
-	print( "Overall recall {}: ".format(recall))
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(test_labels, pred_test_labels, average="macro")
-	print( "Overall precision {}: ".format(precision))
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(test_labels, pred_test_labels, average="macro")
-	print( "Overall f1_score {}: ".format(f1))
+	print("Overall f1_score {}: ".format(f1))
 
 	#report	
-	print( classification_report(test_labels, pred_test_labels, digits=11))
+	print(classification_report(test_labels, pred_test_labels, digits=11))
 
 	# compute accuracy for each class
 	cmatrix = confusion_matrix(test_labels, pred_test_labels)
-	print( cmatrix)
+	print(cmatrix)
 	cmatrix = np.transpose(cmatrix) # cols trueLabel and rows predicted
 	for i in range(num_classes):
 			accuracy_class = 0
 			if np.sum(cmatrix[:,i]) > 0:
 				accuracy_class = float(cmatrix[i,i]) / float(np.sum(cmatrix[:,i]))
-			print( "Accuracy class {} : {}".format(i+1, accuracy_class))
+			print("Accuracy class {} : {}".format(i+1, accuracy_class))
 	
 	#  - Save the model to disk using joblib
 	joblib_fname = 'logreg_joblib.pkl'
 	joblib.dump(cls, joblib_fname)
 	
-	print( "Saved {}!!".format(joblib_fname))
+	print("Saved {}!!".format(joblib_fname))
 
 if __name__ == '__main__':
 	main()
