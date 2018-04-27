@@ -80,7 +80,7 @@ elif model_name == "knn":
 else:
 	model = RandomForestClassifier(max_depth=50, n_estimators=500);
 print(type(model));
-
+print(len(train_data));
 # Train model
 model.fit(train_data, train_labels);
 print("\nModel trained");
