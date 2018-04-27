@@ -18,7 +18,7 @@ from inception import transfer_values_cache
 num_channels = 3
 standard_size = None
 angles_array = [-45,45]
-num_color_transf = 7
+num_color_transf = 2
 batch_size_for_transfer_comp = 50
 
 session = None
@@ -65,13 +65,20 @@ def standarize_and_pad_with_zeros(pil_img):
 
 # Tensor flow operations to obtain a new image with random color transformations
 def generate_random_color_transformation(image):
-	image = tf.image.adjust_hue(image, delta=0.04)
-	image = tf.image.random_contrast(image, lower=1.5, upper=2.5)
-	image = tf.image.adjust_brightness(image, delta=0.2)
-	image = tf.image.random_saturation(image, lower=2.0, upper=2.3)
-	image = tf.image.flip_left_right(image)
-	image = tf.image.flip_up_down(image)
-	image = tf.image.transpose_image(image)
+	image = tf.image.random_hue(image, max_delta=0.05)
+	image = tf.image.random_contrast(image, lower=0.8, upper=1.0)
+	image = tf.image.random_brightness(image, max_delta=0.2)
+	image = tf.image.random_saturation(image, lower=0.0, upper=2.0)
+
+	#image = tf.image.adjust_hue(image, delta=0.04)
+	#image = tf.image.random_contrast(image, lower=1.5, upper=2.5)
+	#image = tf.image.adjust_brightness(image, delta=0.2)
+	#image = tf.image.random_saturation(image, lower=2.0, upper=2.3)
+	#image = tf.image.flip_left_right(image)
+	#image = tf.image.flip_up_down(image)
+	#image = tf.image.transpose_image(image)
+
+
 	#image = tf.image.central_crop(image,central_fraction = 0.7)
 	return image
 
