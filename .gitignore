@@ -8,4 +8,6 @@ output_data_test.npy
 output_cls_test.npy
 output_data_reject.npy
 output_cls_reject.npy
+output_cls_da_train.npy
+output_data_da_train.npy
 model.pkl
