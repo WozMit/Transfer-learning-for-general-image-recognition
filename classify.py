@@ -30,6 +30,10 @@ def J(v):
 	v.sort();
 	return v[-1] - np.mean(v[:-1]) - np.std(v[:-1]);
 
+def Prop(v):
+	v.sort();
+	return v[-1] - v[-2];
+
 start_time = tm.time();
 
 # Parse arguments
@@ -85,6 +89,17 @@ print("\nModel trained");
 
 predicted_labels = model.predict(test_data);
 
+def print_accuracy(prediction):
+	# Accuracy, recall, precision, f1
+	accuracy = accuracy_score(test_labels, prediction);
+	recall = recall_score(test_labels, prediction, average="macro");
+	precision = precision_score(test_labels, prediction, average="macro");
+	f1 = f1_score(test_labels, prediction, average="macro");
+	print("\nOverall accuracy: %10.3f %%" %(accuracy*100));
+	print("Overall recall: %12.3f %%" %(recall*100));
+	print("Overall precision: %9.3f %%" %(precision*100));
+	print("Overall f1: %16.3f %%" %(f1*100));
+
 if(rejection):
 	pre = model.predict_proba(test_data);
 	#good, bad = 0, 0;
@@ -97,24 +112,26 @@ if(rejection):
 	# inception + logistic -> 45
 	# inception + multinomial -> 45
 	# inception + rf -> 5
+	technique_1 = np.copy(predicted_labels);
 	lim = 45;
 	for t in range(len(test_labels)):
-		if(J(pre[t]*100) < lim): predicted_labels[t] = 14;
+		if(Prop(pre[t]*100) < lim): technique_1[t] = 14;
+	print("\nPast proposed technique results:");
+	print_accuracy(technique_1);
 
-print("\nActual labels:");
-print(test_labels);
-print("\nPredicted labels:");
-print(predicted_labels);
+	technique_2 = np.copy(predicted_labels);
+	lim = 45;
+	for t in range(len(test_labels)):
+		if(J(pre[t]*100) < lim): technique_2[t] = 14;
+	print("\nNew proposed technique results:");
+	print_accuracy(technique_2);
+else:
+	print_accuracy(predicted_labels);
 
-# Accuracy, recall, precision, f1
-accuracy = accuracy_score(test_labels, predicted_labels);
-recall = recall_score(test_labels, predicted_labels, average="macro");
-precision = precision_score(test_labels, predicted_labels, average="macro");
-f1 = f1_score(test_labels, predicted_labels, average="macro");
-print("\nOverall accuracy: %10.3f %%" %(accuracy*100));
-print("Overall recall: %12.3f %%" %(recall*100));
-print("Overall precision: %9.3f %%" %(precision*100));
-print("Overall f1: %16.3f %%" %(f1*100));
+#print("\nActual labels:");
+#print(test_labels);
+#print("\nPredicted labels:");
+#print(predicted_labels);
 
 # Save the model
 joblib.dump(model, output_filename);

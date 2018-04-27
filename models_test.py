@@ -1,7 +1,7 @@
 from vgg16 import VGG16
 from vgg19 import VGG19
 from resnet50 import ResNet50
-from xception import Xception
+from xception_model import Xception
 from inception_resnet_v2 import InceptionResNetV2
 from keras import backend as K
 
@@ -57,7 +57,7 @@ def resnet50_transfer_values(image):
 	return d2_train_dataset
 
 def xception_transfer_values(image):
-	base_model = Xception(weights='imagenet')
+	base_model = Xception()
 	model = Model(input=base_model.input, output=base_model.get_layer('avg_pool').output)
 	#img = image.load_img(img_path, target_size=(224, 224))
 	#x = image.img_to_array(img)
@@ -128,7 +128,7 @@ def resnet50_transfer_len():
 	return d2_train_dataset.shape[0]
 
 def xception_transfer_len():
-	base_model = Xception(weights='imagenet')
+	base_model = Xception()
 	model = Model(input=base_model.input, output=base_model.get_layer('avg_pool').output)
 	img_path = '1.jpg'
 	img = image.load_img(img_path, target_size=(299, 299))
