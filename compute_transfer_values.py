@@ -114,7 +114,8 @@ def compute_batch_train_transfer_values(dataset_dir, list_filenames):
 	# compute number of original images and total number of images (after transformations)
 	nimages = len(list_filenames)
 	print(nimages)
-	if data_aug == "yes":		
+	wtf = nimages;
+	if data_aug == "yes":
 		num_rot_transf = len(angles_array)
 		final_nimages = nimages * (num_rot_transf + 1) * (num_color_transf + 1)
 		# allocate memory
@@ -147,6 +148,7 @@ def compute_batch_train_transfer_values(dataset_dir, list_filenames):
 			# include rotated images in the dataset
 			num_added = compute_image_transformations(pil_std_image, cls, current_index, images_train, cls_train)
 			current_index += num_added
+		wtf = final_nimages;
 	else:
 		#num_rot_transf = len(angles_array)
 		#final_nimages = nimages * (num_rot_transf + 1) * (num_color_transf + 1)
@@ -185,24 +187,22 @@ def compute_batch_train_transfer_values(dataset_dir, list_filenames):
 	start_time = time.time()
 	# compute transfer values using model transfer_values function
 	if model == "vgg16":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = models_test.vgg16_transfer_values(image=images_train[i])
 	elif model == "vgg19":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = models_test.vgg19_transfer_values(image=images_train[i])
 	elif model == "inception":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = inception.Inception().transfer_values(image=images_train[i])
 	elif model == "resnet":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = models_test.resnet50_transfer_values(image=images_train[i])
-	
 	elif model == "xception":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = models_test.xception_transfer_values(image=images_train[i])
-
 	elif model == "inceptresv2":
-		for i in range(nimages):
+		for i in range(wtf):
 			transfer_values_train[i] = models_test.inception_resnet_v2_transfer_values(image=images_train[i])
 
 	# end time

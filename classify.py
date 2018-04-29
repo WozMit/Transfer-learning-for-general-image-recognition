@@ -74,7 +74,8 @@ elif model_name == "multinomial":
 elif model_name == "svc":
 	#C, gamma = svm_grid_search(train_data, train_labels)
 	#C, gamma = 10, 0.1;
-	model = SVC();
+	# Inception, Resnet -> SVC(C=30, gamma=0.0005, tol=0.1);
+	model = SVC(C=40, gamma=0.00001);
 elif model_name == "knn":
 	model = KNeighborsClassifier(1);
 else:
@@ -95,10 +96,10 @@ def print_accuracy(prediction):
 	recall = recall_score(test_labels, prediction, average="macro");
 	precision = precision_score(test_labels, prediction, average="macro");
 	f1 = f1_score(test_labels, prediction, average="macro");
-	print("\nOverall accuracy: %10.3f %%" %(accuracy*100));
-	print("Overall recall: %12.3f %%" %(recall*100));
-	print("Overall precision: %9.3f %%" %(precision*100));
-	print("Overall f1: %16.3f %%" %(f1*100));
+	print("\nOverall accuracy: %12.5f %%" %(accuracy*100));
+	print("Overall recall: %12.2f %%" %(recall*100));
+	#print("Overall precision: %9.3f %%" %(precision*100));
+	print("Overall f1: %16.2f %%" %(f1*100));
 
 if(rejection):
 	pre = model.predict_proba(test_data);
@@ -113,14 +114,14 @@ if(rejection):
 	# inception + multinomial -> 45
 	# inception + rf -> 5
 	technique_1 = np.copy(predicted_labels);
-	lim = 45;
+	lim = 5;
 	for t in range(len(test_labels)):
 		if(Prop(pre[t]*100) < lim): technique_1[t] = 14;
 	print("\nPast proposed technique results:");
 	print_accuracy(technique_1);
 
 	technique_2 = np.copy(predicted_labels);
-	lim = 45;
+	lim = 5;
 	for t in range(len(test_labels)):
 		if(J(pre[t]*100) < lim): technique_2[t] = 14;
 	print("\nNew proposed technique results:");

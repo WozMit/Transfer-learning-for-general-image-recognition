@@ -166,10 +166,10 @@ def print_test_accuracy():
 						labels = labels_test, cls_true = cls_test)
 
 	print ("cls_pred")
-	print cls_pred
+	print(cls_pred)
 
-	print "cls_test"
-	print cls_test
+	print("cls_test")
+	print(cls_test)
 
 	# get classification accuracy and the number of correct classifications.
 	acc = correct.mean()
@@ -220,22 +220,22 @@ def main():
 
 	num_classes = int(np.max(cls_train) + 1)
 
-	print "num_classes {}".format(num_classes)
-	print num_test_samples
+	print("num_classes {}".format(num_classes))
+	print(num_test_samples)
 
 	# get labels
 
 	labels_train = np.zeros((num_train_samples, num_classes))
 	labels_test = np.zeros((num_test_samples, num_classes))
 
-	for i in xrange(num_train_samples):
+	for i in range(num_train_samples):
 		labels_train[i, cls_train[i]] = 1
 
-	for i in xrange(num_test_samples):
+	for i in range(num_test_samples):
 		labels_test[i, cls_test[i]] = 1
 
 	input_dim = dataset_train.shape[1]
-	print "input_dim {}".format(input_dim)
+	print("input_dim {}".format(input_dim))
 
 	# create place holder variables
 	x = tf.placeholder(tf.float32, shape=[None, input_dim], name='x')
@@ -275,19 +275,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 
@@ -296,19 +296,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	
 	optimize(num_iterations =1000, batch_size = train_batch_size)
@@ -318,19 +318,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
@@ -340,19 +340,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -361,19 +361,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -382,19 +382,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -403,19 +403,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -424,19 +424,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -445,19 +445,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -466,19 +466,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -487,19 +487,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -508,19 +508,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
@@ -529,41 +529,19 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
-
-
-	optimize(num_iterations =1000, batch_size = train_batch_size)
-	
-	print_test_accuracy()
-
-	# accuracy, recall, precision, and f1-score 
-	# compute overall accuracy 
-	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
-
-	# compute overral recall
-	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
-		
-	# compute overral precision
-	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
-	
-	# compute overral f1_score
-	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
@@ -573,48 +551,70 @@ def main():
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
+
+
+	optimize(num_iterations =1000, batch_size = train_batch_size)
+	
+	print_test_accuracy()
+
+	# accuracy, recall, precision, and f1-score 
+	# compute overall accuracy 
+	acc_test = accuracy_score(cls_test, cls_pred)
+	print("Overall Accuracy {}: ".format(acc_test))
+
+	# compute overral recall
+	recall = recall_score(cls_test, cls_pred, average="macro")  
+	print("Overall recall {}: ".format(recall))
+		
+	# compute overral precision
+	precision = precision_score(cls_test, cls_pred, average="macro")
+	print("Overall precision {}: ".format(precision))
+	
+	# compute overral f1_score
+	f1 = f1_score(cls_test, cls_pred, average="macro")
+	print("Overall f1_score {}: ".format(f1))
 
 	optimize(num_iterations =1000, batch_size = train_batch_size)
 	
 	print_test_accuracy()
 	# Save the variables to disk.
-  	save_path = saver.save(session, model_saved)
-  	print("Model saved in file: %s" % save_path)
+	#save_path = saver.save(session, model_saved);
+	#print("Model saved in file: %s" % save_path);
 
 	#Now, save the graph
-	saver.save(session, 'my_test_model',global_step=1000)
+	#saver.save(session, 'my_test_model',global_step=1000)
 	
 	session.close()
 
 	# accuracy, recall, precision, and f1-score 
 	# compute overall accuracy 
 	acc_test = accuracy_score(cls_test, cls_pred)
-	print "Overall Accuracy {}: ".format(acc_test)
+	print("Overall Accuracy {}: ".format(acc_test))
 
 	# compute overral recall
 	recall = recall_score(cls_test, cls_pred, average="macro")  
-	print "Overall recall {}: ".format(recall)
+	print("Overall recall {}: ".format(recall))
 		
 	# compute overral precision
 	precision = precision_score(cls_test, cls_pred, average="macro")
-	print "Overall precision {}: ".format(precision)
+	print("Overall precision {}: ".format(precision))
 	
 	# compute overral f1_score
 	f1 = f1_score(cls_test, cls_pred, average="macro")
-	print "Overall f1_score {}: ".format(f1)
+	print("Overall f1_score {}: ".format(f1))
 
 
 	
