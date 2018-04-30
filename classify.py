@@ -62,7 +62,7 @@ print("\nDataset read\n");
 # Select model
 if model_name == "nn":
 	model = MLPClassifier(hidden_layer_sizes=(100,), activation='logistic', alpha=0.1, max_iter=500);
-if model_name == "logistic":
+elif model_name == "logistic":
 	model = LogisticRegression();
 elif model_name == "linear_svc":
 	#C = linearSVM_grid_search(train_data, train_labels);
@@ -83,6 +83,7 @@ elif model_name == "knn":
 	model = KNeighborsClassifier(1);
 else:
 	model = RandomForestClassifier(max_depth=50, n_estimators=500);
+print(type(model));
 
 # Train model
 model.fit(train_data, train_labels);
