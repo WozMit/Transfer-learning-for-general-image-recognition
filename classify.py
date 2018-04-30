@@ -43,7 +43,7 @@ parser.add_argument("data_train_file", type=str, help="Dataset train file name (
 parser.add_argument("cls_train_file", type=str, help="Label train filename (*.npy)")
 parser.add_argument("data_test_file", type=str, help="Dataset test file name (*.npy)")
 parser.add_argument("cls_test_file", type=str, help="Label test filename (*.npy)")
-parser.add_argument("model", type=str, help="Classifier", choices=['logistic', 'linear_svc', 'gaussian', 'bernoulli', 'multinomial', 'svc', 'knn', 'rf', 'nn'])
+parser.add_argument("model", type=str, help="Classifier", choices=['nn', 'logistic', 'linear_svc', 'gaussian', 'bernoulli', 'multinomial', 'svm', 'knn', 'rf'])
 parser.add_argument("rejection", type=str, help="Classify with rejection", choices=['yes', 'no']);
 parser.add_argument("output_filename", type=str, help="Predicted output filename");
 args = parser.parse_args()
@@ -55,11 +55,13 @@ test_data = np.load(args.data_test_file);
 test_labels = np.load(args.cls_test_file);
 model_name = args.model;
 rejection = (args.rejection == "yes");
-if(model_name == "linear_svc" or model_name == "svc"): rejection = False;
+if(model_name == "linear_svc" or model_name == "svm"): rejection = False;
 output_filename = args.output_filename;
 print("\nDataset read\n");
 
 # Select model
+if model_name == "nn":
+	model = MLPClassifier(hidden_layer_sizes=(100,), activation='logistic', alpha=0.1, max_iter=500);
 if model_name == "logistic":
 	model = LogisticRegression();
 elif model_name == "linear_svc":
@@ -72,18 +74,15 @@ elif model_name == "bernoulli":
 	model = BernoulliNB();
 elif model_name == "multinomial":
 	model = MultinomialNB();
-elif model_name == "svc":
+elif model_name == "svm":
 	#C, gamma = svm_grid_search(train_data, train_labels)
 	#C, gamma = 10, 0.1;
 	# Inception, Resnet -> SVC(C=30, gamma=0.0005, tol=0.1);
 	model = SVC(C=40, gamma=0.00001);
 elif model_name == "knn":
 	model = KNeighborsClassifier(1);
-elif model_name == "rf":
-	model = RandomForestClassifier(max_depth=50, n_estimators=500);
 else:
-	model = MLPClassifier(hidden_layer_sizes=(100,), activation='logistic', alpha=0.1, max_iter=500);
-	#model = LogisticRegression();
+	model = RandomForestClassifier(max_depth=50, n_estimators=500);
 
 # Train model
 model.fit(train_data, train_labels);
