@@ -4,8 +4,9 @@ import numpy as np;
 from sklearn.linear_model import LogisticRegression;
 from sklearn.svm import LinearSVC, SVC;
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB;
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier;
+from sklearn.ensemble import RandomForestClassifier;
+from sklearn.neural_network import MLPClassifier;
 from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score;
 from sklearn.model_selection import GridSearchCV;
 from sklearn.externals import joblib;
@@ -42,7 +43,7 @@ parser.add_argument("data_train_file", type=str, help="Dataset train file name (
 parser.add_argument("cls_train_file", type=str, help="Label train filename (*.npy)")
 parser.add_argument("data_test_file", type=str, help="Dataset test file name (*.npy)")
 parser.add_argument("cls_test_file", type=str, help="Label test filename (*.npy)")
-parser.add_argument("model", type=str, help="Classifier", choices=['logistic', 'linear_svc', 'gaussian', 'bernoulli', 'multinomial', 'svc', 'knn', 'rf'])
+parser.add_argument("model", type=str, help="Classifier", choices=['logistic', 'linear_svc', 'gaussian', 'bernoulli', 'multinomial', 'svc', 'knn', 'rf', 'nn'])
 parser.add_argument("rejection", type=str, help="Classify with rejection", choices=['yes', 'no']);
 parser.add_argument("output_filename", type=str, help="Predicted output filename");
 args = parser.parse_args()
@@ -78,10 +79,12 @@ elif model_name == "svc":
 	model = SVC(C=40, gamma=0.00001);
 elif model_name == "knn":
 	model = KNeighborsClassifier(1);
-else:
+elif model_name == "rf":
 	model = RandomForestClassifier(max_depth=50, n_estimators=500);
-print(type(model));
-print(len(train_data));
+else:
+	model = MLPClassifier(hidden_layer_sizes=(100,), activation='logistic', alpha=0.1, max_iter=500);
+	#model = LogisticRegression();
+
 # Train model
 model.fit(train_data, train_labels);
 print("\nModel trained");
@@ -114,14 +117,14 @@ if(rejection):
 	# inception + multinomial -> 45
 	# inception + rf -> 5
 	technique_1 = np.copy(predicted_labels);
-	lim = 5;
+	lim = 45;
 	for t in range(len(test_labels)):
 		if(Prop(pre[t]*100) < lim): technique_1[t] = 14;
 	print("\nPast proposed technique results:");
 	print_accuracy(technique_1);
 
 	technique_2 = np.copy(predicted_labels);
-	lim = 5;
+	lim = 45;
 	for t in range(len(test_labels)):
 		if(J(pre[t]*100) < lim): technique_2[t] = 14;
 	print("\nNew proposed technique results:");
