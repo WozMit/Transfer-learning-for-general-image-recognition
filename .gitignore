@@ -14,3 +14,4 @@ output_cls_da_train.npy
 output_data_da_train.npy
 model.pkl
 execute_training.bat
+Results.xlsx
