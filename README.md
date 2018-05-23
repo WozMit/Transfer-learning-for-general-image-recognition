@@ -2,7 +2,7 @@
 Different pre-trained CNN are used, all provided by the framework [Keras](https://github.com/fchollet/deep-learning-models) ([VGG16, VGG19](https://arxiv.org/abs/1409.1556), [Xception](https://arxiv.org/abs/1610.02357), [ResNet](https://arxiv.org/abs/1512.03385), [Inception-ResNet-v2](https://arxiv.org/abs/1602.07261)) and [Magnus Erik Hvass Pedersen](https://github.com/Hvass-Labs/TensorFlow-Tutorials) ([Inception-v3](https://arxiv.org/abs/1512.00567)).
 
 ## Dataset
-The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRDQ?usp=sharing) consists of 2000 images with 14 classes representing historical buildings of the city of Cusco-Perú. The class label, name and number of images is presented:
+The [first version dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRDQ?usp=sharing) consists of 2000 images with 14 classes representing historical buildings of the city of Cusco-Perú. The class label, name and number of images is presented:
 
 | Class label    | Building name   | Number of images|
 | :---:         |     :---:       | :---:|
@@ -20,6 +20,8 @@ The [dataset](https://drive.google.com/drive/folders/0BzMfOBUQtl7dMHJfSGgtVTRZRD
 | 12      | Iglesia de San Francisco       |135|
 | 13      |  Iglesia de San Pedro     |146|
 | 14      |Iglesia de Santo Domingo    |  132|
+
+The [second version](https://drive.google.com/file/d/0B_aI63-sG2GwVWhKR1Q4bXYxZUk/view) is available to download.
 
 ## Requirements
 * [Python](https://www.python.org/) 3.x
