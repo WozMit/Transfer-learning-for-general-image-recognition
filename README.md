@@ -71,3 +71,20 @@ Where
 * `<classifier>`: Model to predict the data (nn, logistic, linear_svc, gaussian, bernoulli, multinomial, svm, knn, rf)
 * `<rejection>`: Use rejection for prediction (yes, no). Not available in linear_svc or svc
 * `<output_file>`: Name of the `.pkl` file to be created containing the trained model E.g. `model.pkl`
+
+## Citation
+
+Please cite this repository if it was useful for your research:
+
+```
+@InProceedings{leon2018,
+	author = {J. Leon-Malpartida and J. D. Farfan-Escobedo and G. E. Cutipa-Arapa}, 
+	booktitle = {2018 IEEE XXV International Conference on Electronics, Electrical Engineering and Computing (INTERCON)}, 
+	title = {A new method of classification with rejection applied to building images recognition based on Transfer Learning}, 
+	year = {2018}, 
+	pages = {1-4}, 
+	keywords = {Buildings;Logistics;Databases;Support vector machines;Convolutional neural networks;Feature extraction;deep learning;building recognition;classification;rejection;convolutional neural networks;transfer learning}, 
+	doi = {10.1109/INTERCON.2018.8526392}, 
+	month={Aug},
+}
+```
